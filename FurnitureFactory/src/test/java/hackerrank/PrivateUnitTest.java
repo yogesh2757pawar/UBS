@@ -8,6 +8,9 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import hackerrank.Furniture;
+import hackerrank.FurnitureOrder;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
 public class PrivateUnitTest {

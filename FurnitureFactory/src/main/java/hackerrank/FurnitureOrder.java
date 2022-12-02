@@ -1,45 +1,44 @@
 package hackerrank;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class FurnitureOrder implements FurnitureOrderInterface {
-    /**
-     * TODO: Create a map of Furniture items to order quantities
-     */
+	HashMap<Furniture, Integer> furniture = null;
 
     /**
      * Initialize a new mapping of Furniture types to order quantities.
      */
     FurnitureOrder() {
-        // TODO: Complete the constructor
+    	furniture = new HashMap<>();
     }
 
     public void addToOrder(final Furniture type, final int furnitureCount) {
-        // TODO: Complete the method
+    	furniture.put(type, furnitureCount);
     }
 
     public HashMap<Furniture, Integer> getOrderedFurniture() {
-        // TODO: Complete the method
-        return null;
+         return furniture;
     }
 
     public float getTotalOrderCost() {
-        // TODO: Complete the method
-        return -1.0f;
+    	float sum = 0;
+        for(Map.Entry<Furniture,Integer> entry : furniture.entrySet()) {
+			sum = entry.getKey().cost()*entry.getValue();
+		}
+        return sum;
     }
 
     public int getTypeCount(Furniture type) {
-        // TODO: Complete the method
-        return -1;
+        return furniture.get(type);
     }
 
     public float getTypeCost(Furniture type) {
-        // TODO: Complete the method
-        return -1.0f;
+        return furniture.get(type)*Furniture.valueOf(type.label()).cost();
     }
 
     public int getTotalOrderQuantity() {
-        // TODO: Complete the method
-        return -1;
+        return furniture.values().stream().filter(Objects::nonNull).mapToInt(i -> i).sum();
     }
 }
